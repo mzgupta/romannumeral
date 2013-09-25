@@ -1,3 +1,3 @@
 romannumeral
 ============
-https://travis-ci.org/mzgupta/romannumeral.png
+<p><img src="https://travis-ci.org/mzgupta/romannumeral.png"/></p>
