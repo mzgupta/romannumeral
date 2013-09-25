@@ -27,16 +27,15 @@ public class RomanNumeral {
 
 		long result = 0;
 
-
 		char[] inputArr = input.toCharArray();
 
 		int lastIndex = inputArr.length - 1;
 
 		String key = "";
-		
-		char firstChar,secondChar;
-		
-		long weight=0l, previousWeight=Long.MAX_VALUE;
+
+		char firstChar, secondChar;
+
+		long weight = 0l, previousWeight = Long.MAX_VALUE;
 
 		for (int i = 0; i <= lastIndex;) {
 
@@ -52,21 +51,31 @@ public class RomanNumeral {
 					i = i + 2;
 				} else {
 					key = firstChar + "";
-					weight = lookup.get(key).weight;
-					i = i + 1;
+					if (lookup.containsKey(key)) {
+						weight = lookup.get(key).weight;
+						i = i + 1;
+					} else {
+						throw new IllegalArgumentException(
+								"Illegeal roman string at position:" + i);
+					}
 				}
 			} else {
 				key = firstChar + "";
-				weight = lookup.get(key).weight;
-				i = i + 1;
+				if (lookup.containsKey(key)) {
+					weight = lookup.get(key).weight;
+					i = i + 1;
+				} else {
+					throw new IllegalArgumentException(
+							"Illegeal roman string at position:" + i);
+				}
 			}
-			
-			if(previousWeight >= weight){
+
+			if (previousWeight >= weight) {
 				result = result + weight;
 				previousWeight = weight;
-			}
-			else{
-				throw new IllegalArgumentException("Illegeal roman string at position:"+i);
+			} else {
+				throw new IllegalArgumentException(
+						"Illegeal roman string at position:" + i);
 			}
 
 		}
