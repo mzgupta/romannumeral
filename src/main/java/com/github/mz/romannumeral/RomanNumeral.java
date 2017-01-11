@@ -14,6 +14,7 @@ public class RomanNumeral {
 	private void init() {
 		for (Symbol symbol : Symbol.values()) {
 			lookup.put(symbol.name(), symbol);
+			
 		}
 
 	}
